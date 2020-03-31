@@ -7,7 +7,7 @@ public class database {
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://"+DatabaseInfo.DBURL + ":" + DatabaseInfo.port + "/" + DatabaseInfo.DBname +
                             "? allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-                            DatabaseInfo.user, DatabaseInfo.password);
+                    DatabaseInfo.user, DatabaseInfo.password);
 
            
             int x = 1;
@@ -19,6 +19,39 @@ public class database {
 
             ResultSet rset = stmt.executeQuery(strSelect);
 
-        }
     
+
+            System.out.println("The records selected are:");
+            while(rset.next()) 
+            
+            {
+
+                String title = rset.getString("body");
+                System.out.println(title);
+            }
+
+            System.out.println("Total number of records = ");
+
+
+
+            ResultSet linkset = stmt.executeQuery(linksSelect);
+
+
+            System.out.println("The records selected are:");
+            int rowCount = 0;
+            while(linkset.next()) {
+                int target_id = linkset.getInt("target_id");
+                String description = linkset.getString("description");
+                System.out.println(target_id + ", " + description);
+                ++rowCount;
+            }
+            System.out.println("Total number of records = " + rowCount);
+
+         
+            conn.close();
+            stmt.close();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
