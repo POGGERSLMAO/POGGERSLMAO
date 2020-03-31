@@ -1,5 +1,5 @@
 
-public class DatabaseLoginData {
+public class DatabaseInfo {
     public static final String DBURL = "localhost";
     public static String port = "3306";
     public static String DBname = "soloaventyr";
