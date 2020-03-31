@@ -21,7 +21,7 @@ public class database {
 
     
 
-            System.out.println("The records selected are:");
+            System.out.println("Raderna du har valt är:");
             while(rset.next()) 
             
             {
@@ -30,14 +30,14 @@ public class database {
                 System.out.println(title);
             }
 
-            System.out.println("Total number of records = ");
+            System.out.println("Nummren av rader = ");
 
 
 
             ResultSet linkset = stmt.executeQuery(linksSelect);
 
 
-            System.out.println("The records selected are:");
+            System.out.println("Raderna du har valt är:");
             int rowCount = 0;
             while(linkset.next()) {
                 int target_id = linkset.getInt("target_id");
@@ -45,7 +45,7 @@ public class database {
                 System.out.println(target_id + ", " + description);
                 ++rowCount;
             }
-            System.out.println("Total number of records = " + rowCount);
+            System.out.println("Det totala nummren av rader = " + rowCount);
 
          
             conn.close();
